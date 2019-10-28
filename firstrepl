@@ -1,1 +1,757 @@
-print("Hello.")
+import time
+import sys
+#Ask user for their name
+
+start = "Y"
+while start == "Y":
+    print("""
+
+    ▄████████    ▄████████ ███▄▄▄▄       ███        ▄████████ ███    █▄     ▄████████       ▄████████         ▄█    █▄       ▄████████    ▄████████  ▄██████▄  
+    ███    ███   ███    ███ ███▀▀▀██▄ ▀█████████▄   ███    ███ ███    ███   ███    ███     ███    ███        ███    ███     ███    ███   ███    ███ ███    ███ 
+    ███    █▀    ███    █▀  ███   ███    ▀███▀▀██   ███    ███ ███    ███   ███    ███     ███    █▀         ███    ███     ███    █▀    ███    ███ ███    ███ 
+    ███         ▄███▄▄▄     ███   ███     ███   ▀   ███    ███ ███    ███  ▄███▄▄▄▄██▀     ███              ▄███▄▄▄▄███▄▄  ▄███▄▄▄      ▄███▄▄▄▄██▀ ███    ███ 
+    ███        ▀▀███▀▀▀     ███   ███     ███     ▀███████████ ███    ███ ▀▀███▀▀▀▀▀     ▀███████████      ▀▀███▀▀▀▀███▀  ▀▀███▀▀▀     ▀▀███▀▀▀▀▀   ███    ███ 
+    ███    █▄    ███    █▄  ███   ███     ███       ███    ███ ███    ███ ▀███████████            ███        ███    ███     ███    █▄  ▀███████████ ███    ███ 
+    ███    ███   ███    ███ ███   ███     ███       ███    ███ ███    ███   ███    ███      ▄█    ███        ███    ███     ███    ███   ███    ███ ███    ███ 
+    ████████▀    ██████████  ▀█   █▀     ▄████▀     ███    █▀  ████████▀    ███    ███    ▄████████▀         ███    █▀      ██████████   ███    ███  ▀██████▀  
+                                                                            █▀     █▀                                                     ▀█    █▀      
+    """)
+
+
+    userHealth =100
+    userExp = 50
+
+    def delay_print(s):
+        for c in s:
+            sys.stdout.write(c)
+            sys.stdout.flush()
+            time.sleep(0.02)
+
+    print()
+    time.sleep(1)
+    delay_print("Welcome to Centaur's Hero. In this game you will embark on a quest and face different choices. Play wisely. The game will begin in 3 seconds.")
+    print()
+    time.sleep(3)
+    print()
+    name = input("Hello, Traveller! I'm Alderon. What is your name?")
+    #Use name of the user to address them in the story
+
+    #Introduce the problem
+    userOrigin = input("Hmm...interesting. Could it be? Wait, where are you from " + name.capitalize() + "?")
+    print()
+    print()
+
+    time.sleep(0.5)
+    delay_print("Elves' Ears! Prophecy foretold of a hero named " + name.capitalize() + " from " + userOrigin.capitalize() + " that would save our kingdom from the Dark Lord, Klaus!")
+    print()
+    print()
+    time.sleep(1)
+    delay_print("I, Alderon, overlord of all centaurs in the Kindgom of Staithia am at your service.")
+    print()
+    print()
+    time.sleep(1)
+    delay_print("I shall guide you on your quest to fight the evil that riddles the kingdom with darkness.")
+    #Kingdom Name: Kingdom of Staithia
+    time.sleep(1)
+    delay_print(" While I can guide you, I cannot make your choices for you.")
+    print()
+    print()
+    time.sleep(1)
+    delay_print("We must travel across forests and deserts to reach the castle of Klaus. ")
+    time.sleep(1)
+    delay_print("All of our bravest knights have failed to stop him. You must be better.")
+    print()
+    print()
+    time.sleep(2)
+    delay_print("Let us leave now. The sun sets on Staithia soon.")
+    print()
+    print()
+    time.sleep(2)
+    print("(Some time passes as you and Alderon travel on the dirt path.)")
+
+    print()
+    print()
+    #*******************************Turn 1*******************************
+    time.sleep(0.5)
+    print("************************First Turn************************")
+    print()
+    print()
+    time.sleep(2)
+    delay_print("Hmm.. We seem to be at a forked path. ")
+    print()
+    print()
+    time.sleep(1)
+    delay_print("""
+    There are three paths in front of you, one leads to the swamp forest where alligators roam, the other takes you on a desert path where water is scant.
+    The third path will take you on a road directly to his castle but it is riddled with Death Eaters.
+    """)
+
+    path = input("What path will you take? 1, 2, or 3?")
+
+    while path.count('1') != 1 and path.count('2') != 1 and path.count('3') != 1:
+        delay_print("That path isn't available right now.")
+        path = input("What path will you take? 1, 2, or 3?")
+
+    while path != '1':
+        if path == '2':
+            delay_print("You start on the path but soon run out of water and pass out.")
+            userHealth -= 15
+            print()
+            delay_print("You also lost 15 health. This is your health right now. ")
+            delay_print("Health: " + str(userHealth))
+            print()
+            print()
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+                exit()
+                start = input("Would you like to play again? (Y) or (N)?")
+            path = input("What path will you take? 1, 2, or 3?")
+            while path.count('1') != 1 and path.count('2') != 1 and path.count('3') != 1:
+                delay_print("That path isn't available right now.")
+                path = input("What path will you take? 1, 2, or 3?")
+        if path == '3':
+            delay_print("You try to get by unnoticed but the death eaters capture you and take you to the dark lord where he tortures you. ")
+            userHealth -= 25
+            delay_print("You also lost 25 health. This is your health right now.")
+            delay_print("Health: " + str(userHealth))
+            print()
+            print()
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+                exit()
+                start = input("Would you like to play again? (Y) or (N)?")
+            path = input("What path will you take? 1, 2, or 3?")
+            while path.count('1') != 1 and path.count('2') != 1 and path.count('3') != 1:
+                delay_print("That path isn't available right now.")
+                path = input("What path will you take? 1, 2, or 3?")
+    time.sleep(1)
+    delay_print("Yes. That is the correct path. You may ride on my back as we gallop over the alligator infested swamps. ")
+    userHealth += 15
+    userExp += 20
+    time.sleep(0.5)
+    delay_print("You also gained some health from a potion. Your health is: " + str(userHealth))
+    print()
+    delay_print("You gained experience! This is your experience now! Exp: " + str(userExp))
+    if userHealth <= 0:
+        delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+        exit()
+        start = input("Would you like to play again? (Y) or (N)?")
+               
+    print()
+    time.sleep(3)
+    print()
+    print()
+    print("************************Second Turn************************")
+    time.sleep(1)
+    print()
+    delay_print("After you travel for a little while, you show up to a tavern overrun by death eaters.")
+    time.sleep(1)
+    delay_print("""
+
+    You now have three choices. You can either fight them off with my help and gain experience,
+    you can run around the tavern and hope they are no death eaters around the back, or you can disguise yourself and attempt to sneak through them.
+    The choice is yours!
+    
+    """)
+
+    path2 = input("What will you choose to do? 1, 2, or 3?")
+
+    while path2.count('1') != 1 and path2.count('2') != 1 and path2.count('3') != 1:
+        delay_print("That path isn't available right now.")
+        path2 = input("What will you choose to do? 1, 2, or 3?")
+
+    while path2 != '3':
+        if path2 == '2':
+            delay_print("You start to go around the tavern but my suspicions were right. Death eaters take you and beat you up. ")
+            userHealth -= 30
+            delay_print("You also lost 30 health. This is your health right now. ")
+            delay_print("Health: " + str(userHealth) + " ")
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+                exit()
+                start = input("Would you like to play again? (Y) or (N)?")
+            path2 = input("What path will you take? 1, 2, or 3?")
+            while path2.count('1') != 1 and path2.count('2') != 1 and path2.count('3') != 1:
+                delay_print("That path isn't available right now.")
+                path2 = input("What will you choose to do? 1, 2, or 3?")
+        if path2 == '1':
+            delay_print("You attempt to fight them off but sadly, we were unequipped to fight them all. They beat us and you barely escaped.")
+            userHealth -= 25
+            delay_print("You also lost 25 health. This is your health right now.")
+            delay_print("Health: " + str(userHealth))
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+                exit()
+                start = input("Would you like to play again? (Y) or (N)?")
+            path2 = input("What path will you take? 1, 2, or 3?")
+            while path2.count('1') != 1 and path2.count('2') != 1 and path2.count('3') != 1:
+                delay_print("That path isn't available right now.")
+                path2 = input("What path will you take? 1, 2, or 3?")
+    print()
+    time.sleep(1)
+    print()
+    delay_print("That is the wisest choice. We disguise ourselves in black robes and slip through the death eaters. Barely. ")
+    userExp += 26
+    delay_print("You gained experience! This is your experience now! Exp: " + str(userExp))
+    if userHealth <= 0:
+        delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+        exit()
+        start = input("Would you like to play again? (Y) or (N)?")
+
+    print()
+    print()
+    print("************************Third Turn************************")
+    time.sleep(1)
+    print()
+    delay_print("""
+    Whew! We barely made it back there. If you were armed, then we would have a fighting chance in case we are caught off guard.
+    """)
+    time.sleep(1)
+    delay_print("""
+    There is a friend of mine, Hephaestus, who is a blacksmith and he can make us a weapon.
+    """)
+    delay_print("(You travel on the road until you reach the workshop of Hephaestus)")
+    print()
+    time.sleep(1)
+    delay_print("""
+    Hepahestus:
+    Well, hello! I assume you need a weapon!
+    You have 3 options. You can either weild the weapon of the noble, a sword.
+    You can choose the weapon of the outlaws and pick a bow and arrow.
+    You can weild the weapon of Kratos, the axe.
+    Choose wisely. 
+    """)
+    print("""
+              
+         
+         ==
+         ||_________________________________
+    OOOOO||________________________________/
+         ||
+         ==
+         
+         
+               4 :..                                                                    
+               4   ".                                        
+               4     ^.                                       
+               4      $                                       
+               4      'b                                      
+               4       "b.                                    
+               4        $                                    
+               4        $r                                   
+               4        $F                                   
+    -$b========4========$b====*P=-                           
+               4       *$$F                                  
+               4        $$"                                  
+               4       .$F                                   
+               4       dP                                    
+               4      F                                      
+               4     @                                       
+               4    .                                        
+               J.                                            
+              '$$
+              
+    
+        
+          .:\      /:.
+         //  \_()_/  \\
+        ||   |    |   ||
+        ||   |    |   ||
+        ||   |____|   ||
+         \\  / || \  //
+          `:/  ||  \;'
+               ||
+               ||
+               XX
+               XX
+               XX
+               XX
+               XX
+               OO
+               `'
+     
+     """)
+
+    choice = input("What will you choose? 1, 2, or 3?")
+
+    while choice.count('1') != 1 and choice.count('2') != 1 and choice.count('3') != 1:
+        delay_print("That weapon will take too long to make. ")
+        choice = input("What will you choose? 1, 2, or 3?")
+
+    if choice == '1':
+        delay_print("You have chosen the mighty sword. This will be your weapon for the rest of the journey. ")
+        userExp += 12
+        delay_print("You also gained 12 experience. This is your experience right now. ")
+        delay_print("Experience: " + str(userExp))
+        if userHealth <= 0:
+            delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+            exit()
+            start = input("Would you like to play again? (Y) or (N)?")
+            while choice.count('1') != 1 and choice.count('2') != 1 and choice.count('3') != 1:
+                delay_print("That weapon is not available. ")
+                choice = input("What will you choose? 1, 2, or 3?")
+    if choice == '2':
+        delay_print("You have chosen the bow and arrow. This will be your weapon until you reach Klaus.")
+        userExp += 12
+        delay_print("You also gained 12 experience. This is your experience right now.")
+        delay_print("Experience: " + str(userExp))
+        if userHealth <= 0:
+            delay_print("Sorry but your health is too low. You have died.")
+            exit()
+            start = input("Would you like to play again? (Y) or (N)?")
+            while choice.count('1') != 1 and choice.count('2') != 1 and choice.count('3') != 1:
+                delay_print("That weapon is not available. ")
+                choice = input("What will you choose? 1, 2, or 3?")
+                
+    print()
+    print()
+    print()
+    print("***********************Fourth Turn***********************")
+    time.sleep(1)
+    print()
+    delay_print("Now that you are armed, we should continue.")
+    print()
+    print()
+    time.sleep(1)
+    delay_print("""
+    We should keep going, it is dark now. This is when theives come out--
+    """)
+    time.sleep(1)
+    delay_print("""
+    Oh my! That man just stole your bag! It had your weapon in it! What will you do?
+    You can chase him and risk wasting time, you can travel back to Hephaestus' shop and ask him to make a new sword for you or we can just quit the quest if
+    you don't feel comfortable continuing without your supplies.
+    """)
+
+    choice1 = input("What will you choose to do? 1, 2, or 3?")
+
+    while choice1.count('1') != 1 and choice1.count('2') != 1 and choice1.count('3') != 1:
+        delay_print("That path isn't available right now. ")
+        choice1 = input("What will you choose to do? 1, 2, or 3?")
+
+    while choice1 != '1':
+        if choice1 == '2':
+            delay_print("You travel back towards Heaphestus' shop but your money was in your bag and cannot pay for a new weapon. We wasted time.")
+            userHealth -= 15
+            delay_print("You also lost 15 health because you didn't have food or water. This is your health right now. ")
+            delay_print("Health: " + str(userHealth))
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+                exit()
+                start = input("Would you like to play again? (Y) or (N)?")
+            choice1 = input("What will you choose to do? 1, 2, or 3?")
+            while choice1.count('1') != 1 and choice1.count('2') != 1 and choice1.count('3') != 1:
+                delay_print("That path isn't available right now. ")
+                choice1 = input("What will you choose to do? 1, 2, or 3?")
+        if choice1 == '3':
+            delay_print("Unfortunately, giving up is never the right choice. As deserved, we go back and come across the tavern of death eaters and this time you don't escape. ")
+            userHealth = 0
+            delay_print("This is your health right now. ")
+            delay_print("Health: " + str(userHealth) + " ")
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+                exit()
+                start = input("Would you like to play again? (Y) or (N)?")
+            choice1 = input("What path will you take? 1, 2, or 3?")
+            while choice1.count('1') != 1 and choice1.count('2') != 1 and choice1.count('3') != 1:
+                delay_print("That path isn't available right now. ")
+                choice1 = input("What path will you take? 1, 2, or 3?")
+    print()
+    time.sleep(1)
+    print()
+    print()
+    delay_print("That is the way of the hero. You run after him and tackle him in the woods and find out that he's a informant for Klaus. You send him off on his way without anything. He also had a spear which is your loot to keep.")
+    print()
+    print()
+    userExp += 26
+    delay_print("You also gained experience! This is your experience now! Exp: " + str(userExp))
+    print()
+    print()
+    delay_print("While this can be celebrated, it is also a warning. Klaus suspects that the hero of the prophecy hunts him. We must act fast. We have a day at best. But for now, we rest. Let's set up camp.")
+    if userHealth <= 0:
+        delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+    print()
+    print()
+    time.sleep(2)
+    delay_print("(You and Alderon set up camp and he casts protection enchantments like 'Protega Maxima' and 'Repello Inimicum' to make a sheild around your campsite.)")
+
+    userHealth += 25
+    delay_print("(You guys sleep well for the night and you get your rest. You also regain some health. This is your health right now: " + str(userHealth) + ")")
+
+    print()
+    print()
+    print("***********************Fifth Turn***********************")
+    time.sleep(1)
+    print()
+    delay_print("(You and Alderon wake up early morning to the sounds of birds chirping in the forested land.)")
+    print()
+    print()
+    time.sleep(1)
+    delay_print("*stretching* That is what a good night's sleep feels like. Come on! Wake up, " + name + "! We must continue. We have a long way ahead of us. While we are close to Kalus' castle, he is now wary of us hunting him. We must face many obstacles.")
+    print()
+    print()
+    delay_print("(You and Alderon pack up your supplies and continue on the main road for a couple hours.)")
+    time.sleep(0.5)
+    delay_print("""
+    Whew! Am I tired! Even centaurs can't travel for that long. Oh, would you look at that? There is a wagon coming up behind us.
+    """)
+    time.sleep(0.5)
+    delay_print("""
+    Farmer on wagon: Well, hello centaur! You seem like you could use a ride! Can I help you to where you need to go?
+    """)
+    time.sleep(0.5)
+    time.sleep(0.5)
+    delay_print("""
+    Alderon: *aside* I know not of this man and I have notice of everyone from the twon that he comes from. We can do one of three things. We can take the ride with someone who could be a henchman for Klaus,
+    we could refuse him and lose a free ride if he is just a farmer,
+    or we could confront him and stop him now from tailing us.
+    """)
+
+
+    choice2 = input("What will you choose to do? 1, 2, or 3?")
+
+    while choice2.count('1') != 1 and choice2.count('2') != 1 and choice2.count('3') != 1:
+        delay_print("That path isn't available right now.")
+        choice2 = input("What will you choose to do? 1, 2, or 3?")
+
+    while choice2 != '3':
+        if choice2 == '1':
+            delay_print("We take the ride with the farmer and it's not long before we realize that he is not taking us to Klaus' castle and he drops us off among death eaters and they kill us.")
+            userHealth = 0
+            delay_print("Your health is zero. You died.")
+            delay_print("Health: " + str(userHealth))
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+                exit()
+                start = input("Would you like to play again? (Y) or (N)?")
+            choice2 = input("What will you choose to do? 1, 2, or 3?")
+            while choice2.count('1') != 1 and choice2.count('2') != 1 and choice2.count('3') != 1:
+                delay_print("That path isn't available right now.")
+                choice2 = input("What will you choose to do? 1, 2, or 3?")
+        if choice2 == '2':
+            delay_print("We refuse the ride and continue and the farmer soon sneaks up behind us and kills you.")
+            userHealth = 0
+            delay_print("Your health is too low.")
+            delay_print("Health: " + str(userHealth))
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+                exit()
+                start = input("Would you like to play again? (Y) or (N)?")
+            choice2 = input("What path will you take? 1, 2, or 3?")
+            while choice2.count('1') != 1 and choice2.count('2') != 1 and choice2.count('3') != 1:
+                delay_print("That path isn't available right now.")
+                choice2 = input("What path will you take? 1, 2, or 3?")
+    print()
+    time.sleep(1)
+    print()
+    print()
+    delay_print("We confront him and tie him down. He takes a poison and kills himself to prevent us getting any information. You were right, he was a killer hired by Klaus. Although, It is a shame that he died.")
+    print()
+    print()
+    userExp += 37
+    delay_print("You also gained experience! This is your experience now! Exp: " + str(userExp))
+    print()
+    print()
+
+    print("***********************Sixth Turn***********************")
+    time.sleep(1)
+    print()
+    delay_print("(Alderon and yourself arrive at the castle gates by sunset, and after a long day of travelling, Alderon says this: )")
+    print()
+    print()
+    time.sleep(1)
+    print()
+    print()
+    delay_print("(A potion master approaches you and tells you that he wishes to help destroy the dark lord and wants to offer you help.)")
+    time.sleep(0.5)
+    delay_print("""
+    Potion Master: I have been under the influence of Lord Klaus for far too long. I offer you three potions. One of these three potions will be beneficial but two of them will
+    disintegrate you on the spot. One will make you faster than you could imagine,
+    the other will make you strong but you will slow down and the last one will give you the power of learner's magic but you cannot use your weapons.
+    """)
+    time.sleep(0.5)
+    delay_print("Alderon: I have heard of you. Come on, " + name.capitalize() + ", make a choice. ")
+
+
+    choice3 = input("What will you choose? 1, 2, or 3?")
+
+    while choice3.count('1') != 1 and choice3.count('2') != 1 and choice3.count('3') != 1:
+        delay_print("That potion isn't available right now.")
+        choice3 = input("What will you choose to do? 1, 2, or 3?")
+
+    while choice3 != '1':
+        if choice3 == '2':
+            delay_print("You take the strength potion, and you feel invincible but soon enough, you turn to dust.")
+            userHealth = 0
+            delay_print("Your health is zero. You died.")
+            delay_print("Health: " + str(userHealth))
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+                exit()
+                start = input("Would you like to play again? (Y) or (N)?")
+            choice3 = input("What will you choose to do? 1, 2, or 3?")
+            while choice3.count('1') != 1 and choice3.count('2') != 1 and choice3.count('3') != 1:
+                delay_print("That path isn't available right now.")
+                choice3 = input("What will you choose to do? 1, 2, or 3?")
+        if choice3 == '3':
+            delay_print("You take the magic potion and your weapons dissapear and soon enough, so do you. Goodbye, hero.")
+            userHealth = 0
+            delay_print("Your health is too low.")
+            delay_print("Health: " + str(userHealth))
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+                exit()
+                start = input("Would you like to play again? (Y) or (N)?")
+            choice3 = input("What path will you take? 1, 2, or 3?")
+            while choice3.count('1') != 1 and choice3.count('2') != 1 and choice3.count('3') != 1:
+                delay_print("That path isn't available right now.")
+                choice3 = input("What path will you take? 1, 2, or 3?")
+    print()
+    time.sleep(1)
+    print()
+    print()
+    delay_print("You take the speed potion and start shaking, but stabilize soon enough and start zipping around everywhere. We say goodbye to the potion master and approach the gates of Klaus.")
+    print()
+    print("""
+                                         {} {}
+                                 !  !  ! II II !  !  !
+                              !  I__I__I_II II_I__I__I  !
+                              I_/|__|__|_|| ||_|__|__|\_I
+                           ! /|_/|  |  | || || |  |  |\_|\ !       
+               .--.        I//|  |  |  | || || |  |  |  |\\I        .--.
+              /-   \    ! /|/ |  |  |  | || || |  |  |  | \|\ !    /=   \
+              \=__ /    I//|  |  |  |  | || || |  |  |  |  |\\I    \-__ /
+               }  {  ! /|/ |  |  |  |  | || || |  |  |  |  | \|\ !  }  {
+              {____} I//|  |  |  |  |  | || || |  |  |  |  |  |\\I {____}
+        _!__!__|= |=/|/ |  |  |  |  |  | || || |  |  |  |  |  | \|\=|  |__!__!_
+        _I__I__|  ||/|__|__|__|__|__|__|_|| ||_|__|__|__|__|__|__|\||- |__I__I_
+        -|--|--|- ||-|--|--|--|--|--|--|-|| ||-|--|--|--|--|--|--|-||= |--|--|-
+         |  |  |  || |  |  |  |  |  |  | || || |  |  |  |  |  |  | ||  |  |  |
+         |  |  |= || |  |  |  |  |  |  | || || |  |  |  |  |  |  | ||= |  |  |
+         |  |  |- || |  |  |  |  |  |  | || || |  |  |  |  |  |  | ||= |  |  |
+         |  |  |- || |  |  |  |  |  |  | || || |  |  |  |  |  |  | ||- |  |  | 
+        _|__|__|  ||_|__|__|__|__|__|__|_|| ||_|__|__|__|__|__|__|_||  |__|__|_
+        -|--|--|= ||-|--|--|--|--|--|--|-|| ||-|--|--|--|--|--|--|-||- |--|--|-
+        -|--|--|| |  |  |  |  |  |  | || || |  |  |  |  |  |  | ||= |  |  | 
+        ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~~~~~~~
+    
+    """)
+    print()
+    print()
+    userExp += 43
+    delay_print("You also gained experience! This is your experience now! Exp: " + str(userExp))
+    print()
+    
+    delay_print("")
+    print()
+    print()
+    print()
+    print()
+    print("""
+                                                          !_
+                                                          |*~=-.,
+                                                          |_,-'`
+                                                          |
+                                                          |
+                                                         /^\
+                           !_                           /   \
+                           |*`~-.,                     /,    \
+                           |.-~^`                     /#"     \
+                           |                        _/##_   _  \_
+                      _   _|  _   _   _            [ ]_[ ]_[ ]_[ ]
+                     [ ]_[ ]_[ ]_[ ]_[ ]            |_=_-=_ - =_|
+                   !_ |_=_ =-_-_  = =_|           !_ |=_= -    |
+                   |*`--,_- _        |            |*`~-.,= []  |
+                   |.-"|=     []     |   !_       |_.-"`_-     |
+                   |   |_=- -        |   |*`~-.,  |  |=_-      |
+                  /^\  |=_= -        |   |_,-~`  /^\ |_ - =[]  |
+              _  /   \_|_=- _   _   _|  _|  _   /   \|=_-      |
+             [ ]/,    \[ ]_[ ]_[ ]_[ ]_[ ]_[ ]_/,    \[ ]=-    |
+              |/#"     \_=-___=__=__- =-_ -=_ /#"     \| _ []  |
+             _/##_   _  \_-_ =  _____       _/##_   _  \_ -    |\
+            [ ]_[ ]_[ ]_[ ]=_0~{_ _ _}~0   [ ]_[ ]_[ ]_[ ]=-   | \
+            |_=__-_=-_  =_|-=_ |  ,  |     |_=-___-_ =-__|_    |  \
+             | _- =-     |-_   | ((* |      |= _=       | -    |___\
+             |= -_=      |=  _ |  `  |      |_-=_       |=_    |/+\|
+             | =_  -     |_ = _ `-.-`       | =_ = =    |=_-   ||+||
+             |-_=- _     |=_   =            |=_= -_     |  =   ||+||
+             |=_- /+\    | -=               |_=- /+\    |=_    |^^^|
+             |=_ |+|+|   |= -  -_,--,_      |_= |+|+|   |  -_  |=  |
+             |  -|+|+|   |-_=  / |  | \     |=_ |+|+|   |-=_   |_-/
+             |=_=|+|+|   | =_= | |  | |     |_- |+|+|   |_ =   |=/
+             | _ ^^^^^   |= -  | |  <&>     |=_=^^^^^   |_=-   |/
+             |=_ =       | =_-_| |  | |     |   =_      | -_   |
+             |_=-_       |=_=  | |  | |     |=_=        |=-    |
+        ^^^^^^^^^^`^`^^`^`^`^^^""""""""^`^^``^^`^^`^^`^`^``^`^``^``^^
+    
+    """)
+    print()
+    print()
+    time.sleep(1)
+    print()
+    print()
+    print()
+    delay_print("This is the final battle. Are you ready? ......It doesn't matter because you have to be.")
+    delay_print("""
+    (You and Alderon approach the throne where the dark lord, Klaus sits with a smug expression.)
+    
+    Klaus: So you are the prophesied hero.... I have to say. I am not too impressed. I expected better, Alderon. I thought you were bringing me a warrior.
+    This is no warrior.
+    
+    Alderon: Klaus, your ego is far too large. If prophecy foretold of him, there is something special about him. I can vouch for this. Just wait.
+    
+    (Klaus gets up from his throne and draws his sword.)
+    
+    Klaus: I will have to decide that for myself.
+    
+    Alderon: This is it. Draw your weapon. Remember, you have the spear that you got from the spy as well.    
+    """)
+    
+    delay_print("(You draw your weapon. Alderon backs into the corner of the throne room.)")
+    print("""
+    Klaus makes the first move by jabbing at you with his sword and you juist barely deflect his strike with
+    one of your own, he falls off balance and it seems you have won but he swings his leg under yours and you fall to the ground where he swings his
+    sword only to find that you turned to dodge his hit and get back up.
+    """)
+    print("""
+    Klaus brings his blade up to swing down on you and you instinctively put your weapon up to block and his blade shatters your weapon.
+    A black light emits from your broken weapon and pushes you and Klaus back into opposite walls. Hepahestus charmed your weapon in case it broke.
+    
+    But with your broken weapon, you are unarmed.
+    """)
+    
+    delay_print("""
+    Alderon: Your spear is in your bag!
+    
+    You draw your spear just as Klaus comes back to kill you and you turn around last minute to jut him in his stomach with your spear. He spits blood
+    but pulls the spear out, you take it from his hand and stab him again in the side this time.
+    
+    You take out the spear and push Klaus to the ground. Alderon comes and tramples him under his hooves. You get on top of him and beat him until
+    Alderon rips you away from him.
+    """)
+    
+    delay_print("""
+    
+    You stand triumphantly over him sweating, panting like a hound and bleeding from your injuries.
+    
+    """)
+    time.sleep(2)
+    
+    delay_print("It's over. You defeated him.")
+    
+    
+    
+        
+    
+    print("***********************Seventh Turn***********************")
+    print()
+    print()
+    time.sleep(1)
+    delay_print("Alright! You defeated the evil dark lord, Klaus! I cannot believe it! The prophecy was right! But....")
+    print()
+    print()
+    delay_print("While he is injured, he can still cause trouble.")
+    time.sleep(0.5)
+    print()
+    print()
+    delay_print("I provide you with three choices.")
+    time.sleep(0.5)
+    delay_print("""
+    It hurts me to put this load on you but it is your quest. You can either kill him and carry the burden of another life on your shoulders,
+    you can send him away to Staithia's dungeons where he could stir trouble, or you could leave him here and let the people deal with him.
+    """)
+    time.sleep(2)
+    delay_print("I am sorry, " + name.capitalize() + ", but you must make the choice.")
+
+
+    finalChoice = input("What will you choose to do? 1, 2, or 3?")
+
+    while finalChoice.count('1') != 1 and finalChoice.count('2') != 1 and finalChoice.count('3') != 1:
+        delay_print("That choice isn't available right now.")
+        finalChoice = input("What will you choose to do? 1, 2, or 3?")
+
+    while finalChoice != '2':
+        if finalChoice == '1':
+            delay_print("I am sorry, I promised I would guide you and I cannot let you make that choice.")
+            finalChoice = input("What will you choose to do? 1, 2, or 3?")
+            while finalChoice.count('1') != 1 and finalChoice.count('2') != 1 and finalChoice.count('3') != 1:
+                delay_print("That choice isn't available right now.")
+                finalChoice = input("What will you choose to do? 1, 2, or 3?")
+        if finalChoice == '3':
+            delay_print("To leave him here in this state would be cruel. Youa re better than that. You are a hero, not a monster.")
+            if userHealth <= 0:
+                delay_print("Sorry but your health is too low. You died. Perhaps you weren't the hero I thought you were.")
+            finalChoice = input("What path will you take? 1, 2, or 3?")
+            while finalChoice.count('1') != 1 and finalChoice.count('2') != 1 and finalChoice.count('3') != 1:
+                delay_print("That choice isn't available right now.")
+                finalChoice = input("What will you take? 1, 2, or 3?")
+    print()
+    time.sleep(1)
+    print()
+    print()
+    delay_print("That is the right choice. I am proud of you for you saved the kingdom.")
+    print()
+    print()
+    delay_print("""
+    We should bask in this victory. Staithia is enlightened, although we do not have a king anymore. The last one fleed when Klaus threathened
+    his rule. He was not a just ruler anyway. Staithia has been in dismay since. I think you should take the reins. It would be an honor for me to
+    be your trustee advisor until you get hold of the laws and ways of our kingdom. That is if it would please .... your majesty.
+    
+    (The kingdom celebrates as it ride of the evil Klaus and joins to meet the new King!)
+    
+    """)
+    
+    print("""
+
+                                                                    The King's Trilogy
+                                                                   SWORD, SHEILD, CROWN
+                                                            
+                                                                                       .-.
+                                                                                      {{#}}
+                                                                      {}               8@8
+                                                                    .::::.             888
+                                                                @\\/W\/\/W\//@         8@8
+                                                                 \\/^\/\/^\//     _    )8(    _
+                                                                  \_O_{}_O_/     (@)__/8@8\__(@
+                                                             ____________________ `~"-=):(=-"~`
+                                                            |<><><>  |  |  <><><>|     |.|
+                                                            |<>      |  |      <>|     | |
+                                                            |<>      |  |      <>|     |'|
+                                                            |<>   .--------.   <>|     |.|
+                                                            |     |   ()   |     |     | |
+                                                            |_____| (O\/O) |_____|     |'|
+                                                            |     \   /\   /     |     |.|
+                                                            |------\  \/  /------|     | |
+                                                            |       '.__.'       |     |.|
+                                                            |        |  |        |     |.|
+                                                            :        |  |        :     | |
+                                                             \       |  |       /      |'|
+                                                              \<>    |  |    <>/       |.|
+                                                               \<>   |  |   <>/        | |
+                                                                `\<> |  | <>/'         |'|
+                                                                  `-.|__|.-`           \ /
+                                                                                        ⇓
+   
+    """)
+    
+    print("""
+
+    ▄████████    ▄████████ ███▄▄▄▄       ███        ▄████████ ███    █▄     ▄████████       ▄████████         ▄█    █▄       ▄████████    ▄████████  ▄██████▄  
+    ███    ███   ███    ███ ███▀▀▀██▄ ▀█████████▄   ███    ███ ███    ███   ███    ███     ███    ███        ███    ███     ███    ███   ███    ███ ███    ███ 
+    ███    █▀    ███    █▀  ███   ███    ▀███▀▀██   ███    ███ ███    ███   ███    ███     ███    █▀         ███    ███     ███    █▀    ███    ███ ███    ███ 
+    ███         ▄███▄▄▄     ███   ███     ███   ▀   ███    ███ ███    ███  ▄███▄▄▄▄██▀     ███              ▄███▄▄▄▄███▄▄  ▄███▄▄▄      ▄███▄▄▄▄██▀ ███    ███ 
+    ███        ▀▀███▀▀▀     ███   ███     ███     ▀███████████ ███    ███ ▀▀███▀▀▀▀▀     ▀███████████      ▀▀███▀▀▀▀███▀  ▀▀███▀▀▀     ▀▀███▀▀▀▀▀   ███    ███ 
+    ███    █▄    ███    █▄  ███   ███     ███       ███    ███ ███    ███ ▀███████████            ███        ███    ███     ███    █▄  ▀███████████ ███    ███ 
+    ███    ███   ███    ███ ███   ███     ███       ███    ███ ███    ███   ███    ███      ▄█    ███        ███    ███     ███    ███   ███    ███ ███    ███ 
+    ████████▀    ██████████  ▀█   █▀     ▄████▀     ███    █▀  ████████▀    ███    ███    ▄████████▀         ███    █▀      ██████████   ███    ███  ▀██████▀  
+                                                                            █▀     █▀                                                     ▀█    █▀      
+    """)
+    
+    time.sleep(3)
+
+start = input("Would you like to play again? (Y) or (N)?")
+
+
+
+        
+
